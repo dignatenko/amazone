@@ -10,4 +10,34 @@ RSpec.describe Order, type: :model do
   it { expect(order).to have_many(:order_items) }
   it { expect(order).to have_one(:billing_address).class_name('BillingAddress') }
   it { expect(order).to have_one(:shipping_address).class_name('ShippingAddress') }
+  it "should return count_total_price correct" do
+    book1 = FactoryGirl.create(:book)
+    book2 = FactoryGirl.create(:book)
+    order.add_order_item(book1, 2)
+    expect(order.total_price).to eq (book1.price * 2)
+    order.add_order_item(book2, 1)
+    expect(order.total_price).to eq (book1.price * 2 + book2.price)
+  end
+  it "should return count_total_price correct" do
+    book1 = FactoryGirl.create(:book)
+    book2 = FactoryGirl.create(:book)
+    order.add_order_item(book1, 4)
+    expect(order.total_price).to eq (book1.price * 4)
+    order.add_order_item(book2, 3)
+    expect(order.total_price).to eq (book1.price * 4 + book2.price * 3)
+  end
+  it "should return count_total_price correct" do
+    book1 = FactoryGirl.create(:book)
+    book2 = FactoryGirl.create(:book)
+    book3 = FactoryGirl.create(:book)
+    book4 = FactoryGirl.create(:book)
+    order.add_order_item(book1, 2)
+    expect(order.total_price).to eq (book1.price * 2)
+    order.add_order_item(book2, 4)
+    expect(order.total_price).to eq (book1.price * 2 + book2.price * 4)
+    order.add_order_item(book3, 1)
+    expect(order.total_price).to eq (book1.price * 2 + book2.price * 4 + book3.price)
+    order.add_order_item(book4, 3)
+    expect(order.total_price).to eq (book1.price * 2 + book2.price * 4 + book3.price + book4.price * 3)
+  end
 end
