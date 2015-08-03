@@ -1,0 +1,8 @@
+.col-xs-3
+  .row
+    .col-xs-12
+      Shop by categories
+  - @categories.each do |category|
+    .row
+      .col-xs-12
+        = link_to category.title.capitalize, category_books_path(category.id)

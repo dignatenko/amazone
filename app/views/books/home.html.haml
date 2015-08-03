@@ -1,0 +1,62 @@
+/ .container-fluid
+/   %div
+/     = link_to "previous", other_book_path(@book.id)
+/   %div
+/     %strong
+/       = @book.title
+/       by
+/       = link_to "#{@book.author.full_name}", author_path(@book.author.id)
+/       /= @book.author.full_name
+/   %div
+/     %span picture
+/     %div
+/       = @book.description
+/   %div
+/     %strong
+/       $
+/       = @book.price
+/     %div
+/       %input(type="number" min="0" max="#{@book.count_in_stock}")
+/       %button.btn.btn-info ADD TO CARD
+/   %div
+/     = link_to "next", other_book_path(@book.id)
+
+.row
+  .col-xs-4
+    %h4
+      %strong
+        = @book.title
+  .col-xs-4
+    %h4
+      by
+      = link_to "#{@book.author.full_name}", author_path(@book.author.id)
+.row
+  .col-xs-1
+    %nav
+      %ul.pager
+        %li.previous
+          %a{:href => "#{other_book_path(@book.id)}"}
+            %span{"aria-hidden" => "true"} ←
+    /= link_to "previous", other_book_path(@book.id)
+  .col-xs-3
+    Picture
+  .col-xs-7
+    = @book.description
+  .col-xs-1
+    %nav
+      %ul.pager
+        %li.next
+          %a{:href => "#{other_book_path(@book.id)}"}
+            %span{"aria-hidden" => "true"} →
+    /= link_to "next", other_book_path(@book.id)
+.row
+  .col-xs-4
+  .col-xs-2
+    %h4
+      %strong
+        $
+        = @book.price
+  .col-xs-2
+    %input(type="number" min="1" max="#{@book.count_in_stock}")
+  .col-xs-4
+    %button.btn.btn-info ADD TO CARD

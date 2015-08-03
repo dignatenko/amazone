@@ -26,6 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'aasm'
 
+gem "haml-rails", "~> 0.9"
+
+gem 'devise'
+
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
+
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -34,7 +42,7 @@ gem 'aasm'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'faker'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -49,8 +57,9 @@ group :development, :test do
 end
 
 group :test do
-  gem 'faker'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  #gem 'faker'
 end
 

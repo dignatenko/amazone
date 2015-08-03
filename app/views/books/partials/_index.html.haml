@@ -1,0 +1,19 @@
+- @books.each_with_index do |book, index|
+  - if index % 3 == 0 
+    .row
+  .col-xs-4
+    .row
+      .col-xs-12
+        Picture
+    .row
+      .col-xs-12
+        = link_to book.title, book_path(book.id)
+    .row
+      .col-xs-12
+        %strong
+          $
+          = book.price
+.row
+  .col-xs-12
+    %center
+      = paginate @books

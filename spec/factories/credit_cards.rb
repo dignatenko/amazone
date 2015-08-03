@@ -6,7 +6,7 @@ FactoryGirl.define do
     expiration_year { Faker::Number.number(4).to_i }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    customer { FactoryGirl.create(:customer) }
+    user { FactoryGirl.create(:user) }
   end
 
 end

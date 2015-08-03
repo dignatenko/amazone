@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :registrations => 'users/registrations' }
+
+  root 'books#home'
+
+  get 'books/:id/other' => 'books#other', as: :other_book
+
+  get 'categories/:id/books' => 'categories#books', as: :category_books
+
+  resources :books, only: [:index, :show]
+
+  resources :authors, only: [:index, :show]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'books#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

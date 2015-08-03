@@ -8,6 +8,6 @@ RSpec.describe CreditCard, type: :model do
   it { expect(credit_card).to validate_presence_of(:expiration_month) }
   it { expect(credit_card).to validate_presence_of(:first_name) }
   it { expect(credit_card).to validate_presence_of(:last_name) }
-  it { expect(credit_card).to belong_to(:customer) }
+  it { expect(credit_card).to belong_to(:user) }
   it { expect(credit_card).to have_many(:orders) }
 end

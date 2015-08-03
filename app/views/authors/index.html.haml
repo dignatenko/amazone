@@ -1,0 +1,14 @@
+%h3.head Authors
+.row
+  %div.span8
+    %div.author
+      %ul
+        - @authors.each do |author|
+          %li
+            = link_to author_path(author) do
+              /= image_tag(book.picture_url, :width => 100) if book.picture.present?
+              %br
+              = link_to author.full_name, author_path(author)
+              %br
+              /= author.biography
+              /%br

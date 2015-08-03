@@ -6,5 +6,6 @@ FactoryGirl.define do
     count_in_stock { Faker::Number.number(2).to_i }
     author { FactoryGirl.create(:author) }
     category { FactoryGirl.create(:category) }
+    middle_rating { Faker::Number.number(2).to_f }
   end
 end

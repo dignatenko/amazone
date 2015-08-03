@@ -1,0 +1,55 @@
+.row
+  .col-xs-12
+    %h4= @book.title
+.row
+  .col-xs-4
+    Picture
+  .col-xs-8
+    .row
+      .col-xs-6
+        %h4
+          %strong
+            $
+            = @book.price
+      .col-xs-3
+        %input(type="number" min="1" max="#{@book.count_in_stock}")
+      .col-xs-3
+        %button.btn.btn-info ADD TO CARD
+    .row
+      .col-xs-12
+        = @book.description
+.row
+  .col-xs-1
+    %strong Reviews
+  .col-xs-3
+    = link_to 'Add review for this book'
+- @book.ratings.each do |rating|
+  .row
+    .col-xs-3
+      / .rating-select
+      /   .btn.btn-default.btn-sm
+      /     %span.fa.fa-star-o
+      /   .btn.btn-default.btn-sm
+      /     %span.fa.fa-star-o
+      /   .btn.btn-default.btn-sm
+      /     %span.fa.fa-star-o
+      /   .btn.btn-default.btn-sm
+      /     %span.fa.fa-star-o
+      /   .btn.btn-default.btn-sm
+      /     %span.fa.fa-star-o
+      - rating.value.times do
+        %span.fa.fa-star-o
+      |
+      - (5 - rating.value).times do
+        %span.fa.fa-star-o
+    .col-xs-4
+      = rating.note
+    .col-xs-2
+      = rating.created_at.strftime("%B %d, %Y")
+  .row
+    .col-xs-2
+      by 
+      = rating.user.full_name
+  .row
+    .col-xs-12
+      = rating.description
